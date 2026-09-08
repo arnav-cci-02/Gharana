@@ -1,0 +1,3 @@
+import { ArrowUpRight } from 'lucide-react'
+import { googleForms } from '../googleForms'
+export function Contact() { const open = (url: string) => window.open(url, '_blank', 'noopener,noreferrer'); return <div className="contact-page page-content"><p className="kicker">Gharana / connect</p><h1>Let's<br/><em>talk.</em></h1><p className="contact-lede">A question, a gifting idea, a partnership? We would love to hear from you.</p><div className="contact-options">{[['General enquiries', googleForms.contactUrl], ['Gifting', googleForms.giftingUrl], ['Wholesale', googleForms.wholesaleUrl], ['International', googleForms.internationalUrl]].map(([label, url]) => <button key={label} onClick={() => open(url)}><span>{label}</span><ArrowUpRight/></button>)}</div></div> }

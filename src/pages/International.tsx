@@ -1,0 +1,4 @@
+import { ArrowRight } from 'lucide-react'
+import { googleForms } from '../googleForms'
+import { siteImages } from '../data'
+export function International() { return <div className="campaign-page global-page"><section className="campaign-hero"><img src={siteImages.global} alt="Global landscape"/><div><p className="kicker">Gharana / beyond borders</p><h1>From India,<br/><em>to the world.</em></h1><button className="button button-light" onClick={() => window.open(googleForms.internationalUrl, '_blank', 'noopener,noreferrer')}>International enquiry <ArrowRight size={16}/></button></div></section><section className="global-copy-large"><p className="kicker">A work in progress</p><h2>We are taking the crunch global, thoughtfully.</h2><p>For international distribution, wholesale and partnership conversations, tell us a little about what you have in mind.</p></section></div> }
