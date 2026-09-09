@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { siteImages } from "../../data";
+import { images } from "../../data/images";
 export function Footer({ navigate }: { navigate: (to: string) => void }) {
   return (
     <footer className="footer">
@@ -21,7 +21,7 @@ export function Footer({ navigate }: { navigate: (to: string) => void }) {
         <div>
           <img
             className="footer-logo"
-            src="/public/Gharana Logo.png"
+            src={images.logo}
             alt="Gharana Makhana"
           />
           <p>Premium makhana, rooted in India and made for modern rituals.</p>

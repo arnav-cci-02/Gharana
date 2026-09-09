@@ -74,7 +74,7 @@ export function CartDrawer({
             <p className="empty">Your bag is waiting for something crunchy.</p>
           )}
         </div>
-        <div className="cart-bottom">
+        <div className="cart-bottom" role="region" aria-label="Cart summary">
           <div>
             <span>Subtotal</span>
             <strong>₹{subtotal}</strong>

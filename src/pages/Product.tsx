@@ -1,6 +1,60 @@
-import { useState } from 'react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { products } from '../data'
-import type { Product as ProductType } from '../data'
-type Props = { id: string; navigate: (to: string) => void; onAdd: (p: ProductType) => void }
-export function Product({ id, navigate, onAdd }: Props) { const product = products.find(p => String(p.id) === id) || products[0]; const [image, setImage] = useState(0); return <div className="product-page page-content"><button className="back-button" onClick={() => navigate('/shop')}><ArrowLeft size={15}/> Back to shop</button><div className="product-detail"><div className="gallery"><img src={product.images[image]} alt={product.name}/><div>{product.images.map((src, i) => <button className={i === image ? 'active' : ''} key={src} onClick={() => setImage(i)}><img src={src} alt={`${product.name} view ${i + 1}`}/></button>)}</div></div><div className="product-info"><p className="kicker">{product.category} / {product.weight}</p><h1>{product.name}</h1><p className="product-lede">{product.description}</p><strong className="big-price">₹{product.price}</strong><div className="purchase"><button className="button button-dark" onClick={() => onAdd(product)}>Add to bag <ArrowRight size={16}/></button></div><div className="detail-block"><h3>What is inside</h3><p>{product.ingredients.join(' / ')}</p></div><div className="detail-block"><h3>Why you'll love it</h3><p>{product.benefits.join(' / ')}</p></div></div></div></div> }
+import { useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { products } from "../data";
+import type { Product as ProductType } from "../data";
+type Props = {
+  id: string;
+  navigate: (to: string) => void;
+  onAdd: (p: ProductType) => void;
+};
+export function Product({ id, navigate, onAdd }: Props) {
+  const product = products.find((p) => String(p.id) === id) || products[0];
+  const [image, setImage] = useState(0);
+  return (
+    <div className="product-page page-content">
+      <button className="back-button" onClick={() => navigate("/shop")}>
+        <ArrowLeft size={15} /> Back to shop
+      </button>
+      <div className="product-detail">
+        <div className="gallery">
+          <img src={product.images[image]} alt={product.name} />
+          <div>
+            {product.images.map((src, i) => (
+              <button
+                className={i === image ? "active" : ""}
+                key={src}
+                onClick={() => setImage(i)}
+              >
+                <img src={src} alt={`${product.name} view ${i + 1}`} />
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="product-info">
+          <p className="kicker">
+            {product.category} / {product.weight}
+          </p>
+          <h1>{product.name}</h1>
+          <p className="product-lede">{product.description}</p>
+          <strong className="big-price">₹{product.price}</strong>
+          <div className="purchase">
+            <button
+              className="button button-dark"
+              onClick={() => onAdd(product)}
+            >
+              Add to bag <ArrowRight size={16} />
+            </button>
+          </div>
+          <div className="detail-block">
+            <h3>What is inside</h3>
+            <p>{product.ingredients.join(" / ")}</p>
+          </div>
+          <div className="detail-block">
+            <h3>Why you'll love it</h3>
+            <p>{product.benefits.join(" / ")}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

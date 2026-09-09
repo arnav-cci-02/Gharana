@@ -1,5 +1,5 @@
 import { Menu, Search, ShoppingBag } from "lucide-react";
-import { siteImages } from "../../data";
+import { images } from "../../data/images";
 type Props = {
   cartCount: number;
   onSearch: () => void;
@@ -14,11 +14,15 @@ export function Navbar({
   onMenu,
   navigate,
 }: Props) {
+  const goHome = () => {
+    navigate("/");
+    requestAnimationFrame(() => document.getElementById("home-hero")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
   return (
     <header className="topbar">
       <nav className="nav">
-        <button className="wordmark" onClick={() => navigate("/")}>
-          <img src="/public/Gharana Logo.png" alt="Gharana Makhana" />
+        <button className="wordmark" onClick={goHome} aria-label="Gharana home">
+          <img src={images.logo} alt="Gharana Makhana" />
         </button>
         <div className="nav-links">
           <button onClick={() => navigate("/")}>Home</button>
