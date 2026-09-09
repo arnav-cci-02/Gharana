@@ -2573,16 +2573,26 @@ select {
   background: #f3eee6;
 }
 .shop-product-card .product-image img {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0deg;
+  --tw-skew-x: 0deg;
+  --tw-skew-y: 0deg;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
   width: 100%;
   height: 100%;
   padding: 7%;
   object-fit: contain;
-  transition:
-    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.42s ease;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
 }
 .shop-product-card:hover .product-image img {
-  transform: scale(1.055) translateY(-3px);
+  --tw-translate-y: -3px;
+  --tw-scale-x: 1.055;
+  --tw-scale-y: 1.055;
 }
 .shop-product-card .product-image span {
   top: 10px;
