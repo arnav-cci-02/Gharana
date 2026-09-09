@@ -56,7 +56,7 @@ function App() {
     : <NotFound navigate={navigate} />
 
   return <div className="page-shell">
-    <Navbar cartCount={cartCount} onSearch={() => setSearchOpen(true)} onCart={() => setCartOpen(true)} onMenu={() => setMenuOpen(true)} navigate={navigate} />
+    <Navbar cartCount={cartCount} onSearch={() => setSearchOpen(true)} onCart={() => setCartOpen(true)} onMenu={() => setMenuOpen(true)} navigate={navigate} currentPath={path} />
     <main>{page}</main>
     <Footer navigate={navigate} />
     <SearchOverlay open={searchOpen} close={() => setSearchOpen(false)} navigate={navigate} />

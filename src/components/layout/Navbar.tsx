@@ -6,6 +6,7 @@ type Props = {
   onCart: () => void;
   onMenu: () => void;
   navigate: (to: string) => void;
+  currentPath?: string;
 };
 export function Navbar({
   cartCount,
@@ -13,6 +14,7 @@ export function Navbar({
   onCart,
   onMenu,
   navigate,
+  currentPath = window.location.pathname,
 }: Props) {
   const goHome = () => {
     navigate("/");
@@ -26,7 +28,7 @@ export function Navbar({
         </button>
         <div className="nav-links">
           <button onClick={() => navigate("/")}>Home</button>
-          <button onClick={() => navigate("/shop")}>Shop</button>
+          <button className={currentPath === "/shop" ? "active" : ""} onClick={() => navigate("/shop")}>Shop</button>
           <button onClick={() => navigate("/about")}>About us</button>
           <button onClick={() => navigate("/gifting")}>Gifting</button>
           <button onClick={() => navigate("/international")}>

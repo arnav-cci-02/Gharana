@@ -1,3 +1,36 @@
-import { ArrowUpRight } from 'lucide-react'
-import type { Product } from '../../data'
-export function ProductCard({ product, onAdd, navigate, large = false }: { product: Product; onAdd: (p: Product) => void; navigate: (to: string) => void; large?: boolean }) { return <article className={`product-card ${large ? 'product-card-large' : ''}`}><button className="product-image" onClick={() => navigate(`/product/${product.id}`)}><img src={product.images[0]} alt={product.name} loading="lazy"/><span>{product.badge}</span><i><ArrowUpRight size={18}/></i></button><div className="product-card-info"><div><p>{product.category}</p><h3>{product.name}</h3></div><div className="product-price"><strong>₹{product.price}</strong><small>{product.weight}</small><button onClick={() => onAdd(product)}>Add +</button></div></div></article> }
+import { ArrowUpRight, Plus } from "lucide-react";
+import type { Product } from "../../data";
+
+type Props = {
+	product: Product;
+	onAdd: (p: Product) => void;
+	navigate: (to: string) => void;
+	large?: boolean;
+};
+
+export function ProductCard({ product, onAdd, navigate, large = false }: Props) {
+	return (
+		<article className={`product-card shop-product-card ${large ? "product-card-large" : ""}`}>
+			<div className="shop-product-media">
+				<button className="product-image" onClick={() => navigate(`/product/${product.id}`)} aria-label={`View ${product.name}`}>
+					<img src={product.images[0]} alt={product.name} loading="lazy" />
+					{product.badge && <span>{product.badge}</span>}
+					<i><ArrowUpRight size={17} /></i>
+				</button>
+				<button className="shop-quick-add" onClick={() => onAdd(product)}>
+					<Plus size={14} /> Quick add
+				</button>
+			</div>
+			<div className="product-card-info">
+				<div className="shop-product-copy">
+					<button className="shop-product-name" onClick={() => navigate(`/product/${product.id}`)}>{product.name}</button>
+					<p>{product.category}</p>
+				</div>
+				<div className="product-price">
+					<strong>₹{product.price}</strong>
+					<small>{product.weight}</small>
+				</div>
+			</div>
+		</article>
+	);
+}

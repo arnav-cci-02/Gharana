@@ -22,7 +22,7 @@ export function Product({ id, navigate, onAdd }: Props) {
             {product.images.map((src, i) => (
               <button
                 className={i === image ? "active" : ""}
-                key={src}
+                key={`${src}-${i}`}
                 onClick={() => setImage(i)}
               >
                 <img src={src} alt={`${product.name} view ${i + 1}`} />
