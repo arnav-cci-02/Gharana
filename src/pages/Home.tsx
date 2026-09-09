@@ -16,9 +16,13 @@ export function Home({ navigate, onAdd }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const rangeProducts = products;
   const activeProduct = rangeProducts[activeIndex];
-  const previousProduct = rangeProducts[(activeIndex - 1 + rangeProducts.length) % rangeProducts.length];
+  const previousProduct =
+    rangeProducts[
+      (activeIndex - 1 + rangeProducts.length) % rangeProducts.length
+    ];
   const nextProduct = rangeProducts[(activeIndex + 1) % rangeProducts.length];
-  const selectProduct = (index: number) => setActiveIndex((index + rangeProducts.length) % rangeProducts.length);
+  const selectProduct = (index: number) =>
+    setActiveIndex((index + rangeProducts.length) % rangeProducts.length);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -87,39 +91,77 @@ export function Home({ navigate, onAdd }: Props) {
           </button>
         </div>
       </section>
-      <section className="range range-showcase scene" aria-labelledby="range-title">
+      <section
+        className="range range-showcase scene"
+        aria-labelledby="range-title"
+      >
         <div className="range-heading">
           <p className="kicker">03 / The collection</p>
-          <h2 id="range-title">Our <em>range.</em></h2>
+          <h2 id="range-title">
+            Our <em>range.</em>
+          </h2>
           <p>Roasted, seasoned and made for passing around.</p>
         </div>
         <div className="range-stage">
-          <button className="range-arrow range-arrow-left" aria-label="Previous product" onClick={() => selectProduct(activeIndex - 1)}>
+          <button
+            className="range-arrow range-arrow-left"
+            aria-label="Previous product"
+            onClick={() => selectProduct(activeIndex - 1)}
+          >
             <ArrowLeft size={20} />
           </button>
-          <button className="range-side range-side-left" onClick={() => selectProduct(activeIndex - 1)} aria-label={`View ${previousProduct.name}`}>
+          <button
+            className="range-side range-side-left"
+            onClick={() => selectProduct(activeIndex - 1)}
+            aria-label={`View ${previousProduct.name}`}
+          >
             <img src={previousProduct.images[0]} alt="" loading="lazy" />
           </button>
           <div className="range-active" aria-live="polite">
-            <img key={activeProduct.id} src={activeProduct.images[0]} alt={activeProduct.name} />
+            <img
+              key={activeProduct.id}
+              src={activeProduct.images[0]}
+              alt={activeProduct.name}
+            />
           </div>
-          <button className="range-side range-side-right" onClick={() => selectProduct(activeIndex + 1)} aria-label={`View ${nextProduct.name}`}>
+          <button
+            className="range-side range-side-right"
+            onClick={() => selectProduct(activeIndex + 1)}
+            aria-label={`View ${nextProduct.name}`}
+          >
             <img src={nextProduct.images[0]} alt="" loading="lazy" />
           </button>
-          <button className="range-arrow range-arrow-right" aria-label="Next product" onClick={() => selectProduct(activeIndex + 1)}>
+          <button
+            className="range-arrow range-arrow-right"
+            aria-label="Next product"
+            onClick={() => selectProduct(activeIndex + 1)}
+          >
             <ArrowRight size={20} />
           </button>
         </div>
         <div className="range-details">
-          <span className="range-counter">0{activeIndex + 1} / 0{rangeProducts.length}</span>
+          <span className="range-counter">
+            0{activeIndex + 1} / 0{rangeProducts.length}
+          </span>
           <h3 key={`title-${activeProduct.id}`}>{activeProduct.name}</h3>
-          <p key={`description-${activeProduct.id}`}>{activeProduct.shortDescription}</p>
-          <button className="button button-light" onClick={() => navigate(`/product/${activeProduct.id}`)}>
+          <p key={`description-${activeProduct.id}`}>
+            {activeProduct.shortDescription}
+          </p>
+          <button
+            className="button button-light"
+            onClick={() => navigate(`/product/${activeProduct.id}`)}
+          >
             Explore product <ArrowRight size={16} />
           </button>
-          <button className="range-add" onClick={() => onAdd(activeProduct)}>Add to bag +</button>
+          <button className="range-add" onClick={() => onAdd(activeProduct)}>
+            Add to bag +
+          </button>
         </div>
-        <div className="range-thumbnails" role="tablist" aria-label="Choose a product">
+        <div
+          className="range-thumbnails"
+          role="tablist"
+          aria-label="Choose a product"
+        >
           {rangeProducts.map((product, index) => (
             <button
               key={product.id}
@@ -160,25 +202,39 @@ export function Home({ navigate, onAdd }: Props) {
         </div>
       </section>
       <section className="photo-story scene">
-        <div className="section-top">
-          <div>
-            <p className="kicker">05 / From our table</p>
-            <h2>
-              Pass it
-              <br />
-              <em>around.</em>
-            </h2>
+        <div className="photo-story-copy">
+          <div className="section-top">
+            <div>
+              <p className="kicker">05 / From our table</p>
+              <h2>
+                Pass it
+                <br />
+                <em>around.</em>
+              </h2>
+              <p className="photo-story-lede">
+                Good crunch is better when the moment is shared.
+              </p>
+            </div>
+          </div>
+          <div className="photo-doodle-strip" aria-hidden="true">
+            <span className="makhana-doodle doodle-gold" />
+            <span className="makhana-doodle doodle-orange" />
+            <span className="makhana-doodle doodle-lime" />
+            <span className="doodle-spark">✦</span>
+            <span className="doodle-note">crunch, pass, repeat</span>
+            <span className="makhana-doodle doodle-cocoa" />
+            <span className="doodle-spark doodle-spark-small">✦</span>
           </div>
         </div>
         <div className="photo-grid">
           {socialTiles.slice(0, 4).map((tile, i) => (
-            <img
-              key={tile}
-              src={tile}
-              alt="Gharana food moment"
-              className={`photo-${i + 1}`}
-              loading="lazy"
-            />
+            <figure key={tile} className={`photo-tile photo-${i + 1}`}>
+              <img src={tile} alt="Gharana food moment" loading="lazy" />
+              <figcaption>
+                <span>Gharana / 0{i + 1}</span>
+                <b>{["Open the bag", "Pass the bowl", "Stay for one more", "Made to share"][i]}</b>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
@@ -204,9 +260,7 @@ export function Home({ navigate, onAdd }: Props) {
         </div>
       </section>
       <section className="voices scene">
-        <p className="kicker">07 / Kind words</p>
         <div className="voice">
-          <span>“</span>
           <blockquote>{testimonials[0].quote}</blockquote>
           <p>
             {testimonials[0].author} / {testimonials[0].title}
@@ -214,7 +268,6 @@ export function Home({ navigate, onAdd }: Props) {
         </div>
       </section>
       <section className="newsletter scene">
-        <p className="kicker">08 / Stay in the loop</p>
         <h2>
           Good things
           <br />
