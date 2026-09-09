@@ -1788,7 +1788,7 @@ select {
 .product-detail-hero {
   min-height: 760px;
   padding: 145px 6vw 90px;
-  background: #4e0000;
+  background: var(--product-bg);
   color: var(--product-fg);
 }
 .product-detail-inner {
@@ -1822,17 +1822,44 @@ select {
   place-items: center;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.42);
+  background: var(--product-bg, rgba(255, 255, 255, 0.42));
   border: 1px solid rgba(0, 0, 0, 0.22);
 }
-.product-gallery-stage img {
+.product-gallery-stage .product-media-ambient {
+  position: absolute;
+  z-index: 0;
+  inset: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  max-width: none;
+  padding: 0;
+  object-fit: cover;
+  filter: blur(35px) saturate(0.8) brightness(0.55);
+  opacity: 0.68;
+  transform: scale(1.15);
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+.product-media-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 65%),
+    linear-gradient(135deg, color-mix(in srgb, var(--product-bg, #222) 18%, transparent), rgba(0, 0, 0, 0.25));
+  pointer-events: none;
+}
+.product-gallery-stage .product-media-main {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
   padding: 7%;
   object-fit: contain;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.18));
+  animation: product-media-in 0.4s ease both;
   transition: transform 0.35s ease;
 }
-.product-gallery-stage:hover img {
+.product-gallery-stage:hover .product-media-main {
   transform: scale(1.025);
 }
 .product-gallery-arrows {
@@ -1856,23 +1883,62 @@ select {
   display: flex;
   gap: 10px;
   margin-top: 14px;
+  padding: 5px 2px 8px;
   overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.product-gallery-thumbs::-webkit-scrollbar {
+  display: none;
 }
 .product-gallery-thumbs button {
   flex: 0 0 76px;
   width: 76px;
   height: 76px;
   padding: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.28);
-  background: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--product-fg, #000) 28%, transparent);
+  background: rgba(255, 255, 255, 0.16);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.product-gallery-thumbs button:hover {
+  transform: translateY(-2px) scale(1.04);
 }
 .product-gallery-thumbs button.active {
   border: 2px solid var(--product-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--product-accent) 22%, transparent);
 }
 .product-gallery-thumbs img {
   width: 100%;
   height: 100%;
+  padding: 0;
   object-fit: contain;
+  transition: transform 0.22s ease;
+}
+.product-gallery-thumbs button:hover img {
+  transform: scale(1.05);
+}
+@keyframes product-media-in {
+  from { opacity: 0; transform: scale(1.015); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 800px) {
+  .product-gallery-stage .product-media-ambient {
+    inset: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    filter: blur(22px) saturate(0.8) brightness(0.55);
+    transform: scale(1.1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-gallery-stage .product-media-ambient,
+  .product-gallery-stage .product-media-main,
+  .product-gallery-thumbs button,
+  .product-gallery-thumbs img {
+    transition: none;
+    animation: none;
+  }
 }
 .product-detail-info {
   align-self: center;

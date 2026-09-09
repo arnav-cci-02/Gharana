@@ -14,7 +14,19 @@ export function ProductGallery({ product }: Props) {
   return (
     <div className="product-gallery">
       <div className="product-gallery-stage">
-        <img src={product.images[activeImage]} alt={product.name} />
+        <img
+          className="product-media-ambient"
+          src={product.images[activeImage]}
+          alt=""
+          aria-hidden="true"
+        />
+        <div className="product-media-overlay" aria-hidden="true" />
+        <img
+          key={`${product.images[activeImage]}-${activeImage}`}
+          className="product-media-main"
+          src={product.images[activeImage]}
+          alt={product.name}
+        />
         {hasNavigation && (
           <div className="product-gallery-arrows">
             <button onClick={() => selectImage(activeImage - 1)} aria-label="Previous product image"><ArrowLeft size={17} /></button>
@@ -23,9 +35,9 @@ export function ProductGallery({ product }: Props) {
         )}
       </div>
       {product.images.length > 0 && (
-        <div className="product-gallery-thumbs" aria-label="Product images">
+        <div className="product-gallery-thumbs" aria-label="Product images" role="list">
           {product.images.map((image, index) => (
-            <button key={`${image}-${index}`} className={index === activeImage ? "active" : ""} onClick={() => selectImage(index)} aria-label={`View ${product.name} image ${index + 1}`}>
+            <button key={`${image}-${index}`} className={index === activeImage ? "active" : ""} onClick={() => selectImage(index)} aria-label={`View ${product.name} image ${index + 1}`} role="listitem">
               <img src={image} alt="" />
             </button>
           ))}
