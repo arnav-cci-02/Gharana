@@ -17,6 +17,11 @@ export type Product = {
   ingredients: string[];
   nutritionalInfo: string[];
   benefits: string[];
+  theme: {
+    background: string;
+    foreground: string;
+    accent: string;
+  };
 };
 
 export const siteImages = {
@@ -76,11 +81,7 @@ export const products: Product[] = [
     weight: "100 g",
     badge: "Best Seller",
     featured: true,
-    images: [
-      images.products.classic,
-      images.products.classic,
-      images.products.classic,
-    ],
+    images: [images.products.classic],
     variants: ["Classic", "Smoky", "Salted"],
     ingredients: ["Makhana", "Cold-pressed edible oil", "Sea salt"],
     nutritionalInfo: ["High in protein", "Low in saturated fat", "Gluten free"],
@@ -89,6 +90,7 @@ export const products: Product[] = [
       "Digestive-friendly snack",
       "Ideal for mindful snacking",
     ],
+    theme: { background: "#d8c29e", foreground: "#17110c", accent: "#e86d3f" },
   },
   {
     id: 2,
@@ -102,11 +104,7 @@ export const products: Product[] = [
     weight: "80 g",
     badge: "Spicy Pick",
     featured: true,
-    images: [
-      images.products.periPeri,
-      images.products.periPeri,
-      images.products.periPeri,
-    ],
+    images: [images.products.periPeri],
     variants: ["100 g", "200 g"],
     ingredients: ["Makhana", "Peri peri seasoning", "Sunflower oil"],
     nutritionalInfo: ["Rich in fibre", "Natural protein", "No maida"],
@@ -115,26 +113,23 @@ export const products: Product[] = [
       "Healthy crunch",
       "Perfect for evening bites",
     ],
+    theme: { background: "#d9572b", foreground: "#fff5e8", accent: "#d6ed67" },
   },
   {
     id: 3,
-    name: "Masala Makhana",
-    slug: "masala-makhana",
-    category: "Flavoured Makhana",
+    name: "Cheese Makhana",
+    slug: "cheese-makhana",
+    category: "Cheese Makhana",
     description:
-      "A warm, spiced blend inspired by Indian pantry aromas, balanced for a full-bodied savoury profile and crisp finish.",
-    shortDescription: "A bold masala crunch with gentle heat.",
+      "A rich, savoury roast with a cheesy finish and a crisp, satisfying bite.",
+    shortDescription: "A creamy cheese finish over a light, crisp crunch.",
     price: 289,
     weight: "100 g",
     badge: "Flavour Note",
     featured: false,
-    images: [
-      images.products.cheese,
-      images.products.cheese,
-      images.products.cheese,
-    ],
-    variants: ["Classic Masala", "Extra spicy"],
-    ingredients: ["Makhana", "Indian masala blend", "Rock salt"],
+    images: [images.products.cheese],
+    variants: ["100 g"],
+    ingredients: ["Makhana", "Cheese seasoning", "Sunflower oil"],
     nutritionalInfo: [
       "Naturally gluten free",
       "Protein-rich",
@@ -145,6 +140,7 @@ export const products: Product[] = [
       "Good for social snacking",
       "Clean taste profile",
     ],
+    theme: { background: "#e0b52d", foreground: "#17110c", accent: "#fff3a6" },
   },
   {
     id: 4,
@@ -159,67 +155,58 @@ export const products: Product[] = [
     weight: "4 packs",
     badge: "Gift Ready",
     featured: true,
-    images: [
-      images.products.giftPack,
-      images.products.giftPack,
-      images.products.giftPack,
-    ],
+    images: [images.products.giftPack],
     variants: ["Festive", "Corporate", "Custom"],
     ingredients: ["Assorted makhana flavours", "Luxury gift packaging"],
     nutritionalInfo: ["Gift-worthy assortment", "Premium presentation"],
     benefits: ["Elegant gifting", "Ready to send", "Celebration-ready"],
+    theme: { background: "#d3aa4a", foreground: "#17110c", accent: "#fff0bd" },
   },
   {
     id: 5,
-    name: "Raw Makhana",
-    slug: "raw-makhana",
-    category: "Raw Makhana",
+    name: "Salted Makhana",
+    slug: "salted-makhana",
+    category: "Salted Makhana",
     description:
-      "Whole foxnuts in their natural form, suited for slow roasting, soaking, curries and everyday kitchen versatility.",
-    shortDescription: "Whole, clean and versatile for daily home use.",
+      "Lightly seasoned makhana with a clean salt finish and an easy everyday crunch.",
+    shortDescription: "Clean seasoning and a satisfying everyday crunch.",
     price: 229,
     weight: "250 g",
     badge: "Kitchen Essential",
     featured: false,
-    images: [
-      images.products.salted,
-      images.products.salted,
-      images.products.salted,
-    ],
+    images: [images.products.salted],
     variants: ["250 g", "500 g"],
-    ingredients: ["Raw makhana"],
+    ingredients: ["Makhana", "Sea salt", "Cold-pressed edible oil"],
     nutritionalInfo: [
       "Naturally wholesome",
       "Flexible ingredient",
       "No additives",
     ],
-    benefits: ["Cooking versatility", "Minimal processing", "Daily essentials"],
+    benefits: ["Light and crunchy", "Clean taste profile", "Everyday snacking"],
+    theme: { background: "#d8ddd2", foreground: "#171b17", accent: "#9baea0" },
   },
   {
     id: 6,
-    name: "Makhana Flour",
-    slug: "makhana-flour",
-    category: "Makhana Flour",
+    name: "Chocolate Coated Makhana",
+    slug: "chocolate-coated-makhana",
+    category: "Chocolate Coated Makhana",
     description:
-      "A clean, nutritious flour alternative that brings gentle texture and versatility into modern cooking and wellness routines.",
-    shortDescription: "Functional flour for conscious, modern kitchens.",
+      "Crisp makhana finished with a deep cocoa coating for a naturally indulgent bite.",
+    shortDescription: "A deep cocoa finish with a crisp makhana bite.",
     price: 399,
-    weight: "250 g",
+    weight: "100 g",
     badge: "New",
     featured: false,
-    images: [
-      images.products.chocolate,
-      images.products.chocolate,
-      images.products.chocolate,
-    ],
-    variants: ["250 g", "500 g"],
-    ingredients: ["Ground makhana"],
+    images: [images.products.chocolate],
+    variants: ["100 g"],
+    ingredients: ["Makhana", "Cocoa", "Cane sugar"],
     nutritionalInfo: [
       "Gluten free",
       "Light and versatile",
       "Baked-good friendly",
     ],
-    benefits: ["Better ingredient choice", "Clean label", "Functional use"],
+    benefits: ["Crisp texture", "Rich cocoa finish", "Made for treat moments"],
+    theme: { background: "#4a261d", foreground: "#fff2e4", accent: "#d99a78" },
   },
 ];
 

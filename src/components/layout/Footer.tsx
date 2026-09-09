@@ -1,5 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Camera } from "lucide-react";
 import { images } from "../../data/images";
+import { socialLinks } from "../../data/social";
 export function Footer({ navigate }: { navigate: (to: string) => void }) {
   return (
     <footer className="footer">
@@ -43,6 +44,9 @@ export function Footer({ navigate }: { navigate: (to: string) => void }) {
           <button onClick={() => navigate("/shipping-returns")}>
             Shipping & returns
           </button>
+          <a className="footer-social" href={socialLinks.instagram} aria-label="Instagram" onClick={(event) => { if (socialLinks.instagram === "#") event.preventDefault(); }}>
+            <Camera size={16} /> Instagram
+          </a>
         </div>
       </div>
       <div className="footer-end">

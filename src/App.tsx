@@ -17,6 +17,7 @@ import { NotFound } from './pages/NotFound'
 import { Product } from './pages/Product'
 import { Shop } from './pages/Shop'
 import { Search } from './pages/Search'
+import { Chatbot } from './components/chatbot/Chatbot'
 
 function App() {
   const [path, setPath] = useState(window.location.pathname)
@@ -42,7 +43,7 @@ function App() {
     setMenuOpen(false)
     window.scrollTo(0, 0)
   }
-  const add = (product: (typeof products)[number]) => { addToCart(product); setCartOpen(true) }
+  const add = (product: (typeof products)[number], quantity = 1) => { addToCart(product, quantity); setCartOpen(true) }
   const page = path === '/' ? <Home navigate={navigate} onAdd={add} />
     : path === '/shop' || path.startsWith('/shop/') ? <Shop navigate={navigate} onAdd={add} />
     : path.startsWith('/product/') ? <Product id={path.split('/')[2]} navigate={navigate} onAdd={add} />
@@ -62,6 +63,7 @@ function App() {
     <SearchOverlay open={searchOpen} close={() => setSearchOpen(false)} navigate={navigate} />
     <MobileMenu open={menuOpen} close={() => setMenuOpen(false)} navigate={navigate} />
     <CartDrawer open={cartOpen} close={() => setCartOpen(false)} cart={cart} subtotal={subtotal} changeQty={changeQty} clearCart={clearCart} />
+    <Chatbot navigate={navigate} hidden={cartOpen || menuOpen || searchOpen} />
   </div>
 }
 
