@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { googleForms } from "../googleForms";
+import { images } from "../data/images";
 export function Gifting() {
   const enquire = () =>
     window.open(googleForms.giftingUrl, "_blank", "noopener,noreferrer");
@@ -7,7 +8,7 @@ export function Gifting() {
     <div className="campaign-page">
       <section className="campaign-hero">
         <img
-          src="/assets/products-img/makhana-giftpack.png"
+          src={images.products.giftPack}
           alt="Thoughtful gift wrapped for sharing"
         />
         <div>

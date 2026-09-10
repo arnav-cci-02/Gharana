@@ -96,7 +96,6 @@ export function Home({ navigate, onAdd }: Props) {
         aria-labelledby="range-title"
       >
         <div className="range-heading">
-          <p className="kicker">03 / The collection</p>
           <h2 id="range-title">
             Our <em>range.</em>
           </h2>
