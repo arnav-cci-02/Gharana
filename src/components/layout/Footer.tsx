@@ -20,6 +20,7 @@ export function Footer({ navigate }: { navigate: (to: string) => void }) {
       </div>
       <div className="footer-grid">
         <div>
+          <h1 className="footer-title">GHARANA MAKHANA</h1>
           <img
             className="footer-logo"
             src={images.logo}

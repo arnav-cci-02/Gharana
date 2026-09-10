@@ -15,7 +15,7 @@ export const images = {
     saltedBack: "/assets/products/salted/SALTED-MAKHANA-PACK-BACK.png",
     chocolate: "/assets/products/chocolate/CHOCOLATE-MAKHANA-PACK-FRONT.png",
     chocolateBack: "/assets/products/chocolate/CHOCOLATE-MAKHANA-PACK-BACK.png",
-    giftPack: "/assets/products-img/makhana-giftpack.png",
+    giftPack: "/assets/products/gift-pack/gift-pack.png",
   },
   fallback: "/assets/hero-section/hero-bg.png",
 } as const;

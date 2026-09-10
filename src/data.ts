@@ -144,26 +144,6 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    name: "Premium Gift Box",
-    slug: "premium-gift-box",
-    category: "Gift Packs",
-    description:
-      "A beautifully curated celebratory box that turns makhana into a thoughtful gifting ritual for festive and corporate moments.",
-    shortDescription:
-      "Premium makhana gift sets designed for meaningful occasions.",
-    price: 799,
-    weight: "4 packs",
-    badge: "Gift Ready",
-    featured: true,
-    images: [images.products.giftPack],
-    variants: ["Festive", "Corporate", "Custom"],
-    ingredients: ["Assorted makhana flavours", "Luxury gift packaging"],
-    nutritionalInfo: ["Gift-worthy assortment", "Premium presentation"],
-    benefits: ["Elegant gifting", "Ready to send", "Celebration-ready"],
-    theme: { background: "#d3aa4a", foreground: "#17110c", accent: "#fff0bd" },
-  },
-  {
-    id: 5,
     name: "Salted Makhana",
     slug: "salted-makhana",
     category: "Salted Makhana",
@@ -186,12 +166,12 @@ export const products: Product[] = [
     theme: { background: "#d8ddd2", foreground: "#171b17", accent: "#9baea0" },
   },
   {
-    id: 6,
+    id: 5,
     name: "Chocolate Coated Makhana",
     slug: "chocolate-coated-makhana",
     category: "Chocolate Coated Makhana",
     description:
-      "Crisp makhana finished with a deep cocoa coating for a naturally indulgent bite.",
+    "Crisp makhana finished with a deep cocoa coating for a naturally indulgent bite.",
     shortDescription: "A deep cocoa finish with a crisp makhana bite.",
     price: 399,
     weight: "100 g",
@@ -208,6 +188,26 @@ export const products: Product[] = [
     benefits: ["Crisp texture", "Rich cocoa finish", "Made for treat moments"],
     theme: { background: "#4a261d", foreground: "#fff2e4", accent: "#d99a78" },
   },
+  {
+    id: 6,
+    name: "Premium Gift Box",
+    slug: "premium-gift-box",
+    category: "Gift Packs",
+    description:
+      "A beautifully curated celebratory box that turns makhana into a thoughtful gifting ritual for festive and corporate moments.",
+    shortDescription:
+      "Premium makhana gift sets designed for meaningful occasions.",
+    price: 799,
+    weight: "4 packs",
+    badge: "Gift Ready",
+    featured: true,
+    images: [images.products.giftPack],
+    variants: ["Festive", "Corporate", "Custom"],
+    ingredients: ["Assorted makhana flavours", "Luxury gift packaging"],
+    nutritionalInfo: ["Gift-worthy assortment", "Premium presentation"],
+    benefits: ["Elegant gifting", "Ready to send", "Celebration-ready"],
+    theme: { background: "#d3aa4a", foreground: "#17110c", accent: "#fff0bd" },
+  }
 ];
 
 export const benefitMarquee = [
