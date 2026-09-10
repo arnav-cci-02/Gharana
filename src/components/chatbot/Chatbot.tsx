@@ -49,7 +49,7 @@ export function Chatbot({ navigate, hidden = false }: Props) {
       "FIND MY FLAVOUR": () => { addMessage("assistant", "What kind of flavour are you in the mood for?"); setFlow("flavour"); },
       "GIFT PACKS": () => { addMessage("assistant", "Our gifting edit is ready when you are."); navigate("/gifting"); setOpen(false); },
       "ORDER HELP": () => addMessage("assistant", "Choose a product, add it to your bag, then use Place order. We finish the order through the configured Google Form."),
-      "BULK ORDERS": () => { addMessage("assistant", "Opening the wholesale enquiry form."); window.open(googleForms.wholesaleUrl, "_blank", "noopener,noreferrer"); },
+      "BULK ORDERS": () => { addMessage("assistant", "Opening the wholesale enquiry form."); window.open(googleForms.businessUrl, "_blank", "noopener,noreferrer"); },
       "CONTACT US": () => { addMessage("assistant", "Opening the contact page."); navigate("/contact"); setOpen(false); },
     };
     responses[action]?.();

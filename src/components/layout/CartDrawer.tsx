@@ -1,10 +1,6 @@
 import { Minus, Plus, X } from "lucide-react";
 import type { CartItem } from "../../hooks/useCart";
-import {
-  buildOrderSummary,
-  googleFormEntries,
-  googleForms,
-} from "../../googleForms";
+import { buildOrderSummary, googleForms } from "../../googleForms";
 type Props = {
   open: boolean;
   close: () => void;
@@ -24,10 +20,13 @@ export function CartDrawer({
   if (!open) return null;
   const order = () => {
     if (!cart.length) return;
-    const summary = buildOrderSummary(cart);
-    const url = googleForms.orderUrl.includes("your-order-form")
-      ? googleForms.orderUrl
-      : `${googleForms.orderUrl}?${new URLSearchParams({ [googleFormEntries.orderSummary]: summary }).toString()}`;
+    const summary = buildOrderSummary(cart, subtotal);
+    const params = new URLSearchParams({
+      usp: "pp_url",
+      [googleForms.order.fields.orderDetails]: summary,
+      [googleForms.order.fields.orderTotal]: `₹${subtotal.toLocaleString("en-IN")}`,
+    });
+    const url = `${googleForms.order.prefillBaseUrl}?${params.toString()}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
   return (

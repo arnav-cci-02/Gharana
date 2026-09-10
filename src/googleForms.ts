@@ -1,29 +1,29 @@
 export const googleForms = {
-  orderUrl: 'https://forms.gle/your-order-form',
-  contactUrl: 'https://forms.gle/your-contact-form',
-  giftingUrl: 'https://forms.gle/your-gifting-form',
-  wholesaleUrl: 'https://forms.gle/your-wholesale-form',
-  internationalUrl: 'https://forms.gle/your-international-form',
+  order: {
+    publicUrl: 'https://forms.gle/oiYFj3FCqFzg4ef7A',
+    prefillBaseUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfc4-1sqsvCKdymeYe4TVWvsn9vJYgJuoXKVgHIimNiS2v21g/viewform',
+    fields: {
+      orderDetails: 'entry.2051627265',
+      orderTotal: 'entry.839337160',
+    },
+  },
+  giftingUrl: 'https://forms.gle/rNSoWGCun7rL8CmE7',
+  businessUrl: 'https://forms.gle/QEKquHnqxfS3NTzz7',
+  contactUrl: 'https://forms.gle/Rvy6vRNeDSZgWfh97',
 }
 
-export const googleFormEntries = {
-  orderSummary: 'entry.XXXXXXXX',
-  customerName: 'entry.XXXXXXXX',
-  phone: 'entry.XXXXXXXX',
-  email: 'entry.XXXXXXXX',
-  address: 'entry.XXXXXXXX',
-}
-
-export const buildOrderSummary = (items: Array<{ name: string; quantity: number; weight: string; price: number }>) => {
+export const buildOrderSummary = (
+  items: Array<{ name: string; quantity: number }>,
+  subtotal: number,
+) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)
-  const subtotal = items.reduce((sum, item) => sum + item.quantity * item.price, 0)
 
   const lines = [
-    'Order Summary',
-    ...items.map((item) => `${item.quantity} × ${item.name} — ${item.weight}`),
+    'Gharana Order',
+    ...items.map((item) => `${item.name} × ${item.quantity}`),
     '',
     `Total Items: ${totalItems}`,
-    `Cart subtotal: ₹${subtotal}`,
+    `Total: ₹${subtotal.toLocaleString('en-IN')}`,
   ]
 
   return lines.join('\n')

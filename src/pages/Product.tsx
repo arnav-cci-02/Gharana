@@ -1,6 +1,6 @@
 import { ArrowRight, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
-import { buildOrderSummary, googleFormEntries, googleForms } from "../googleForms";
+import { buildOrderSummary, googleForms } from "../googleForms";
 import { products } from "../data";
 import type { Product as ProductType } from "../data";
 import { ProductGallery } from "../components/product/ProductGallery";
@@ -36,10 +36,14 @@ export function Product({ id, navigate, onAdd }: Props) {
   }
 
   const orderNow = () => {
-    const summary = buildOrderSummary([{ name: product.name, quantity, weight: variant || product.weight, price: product.price }]);
-    const url = googleForms.orderUrl.includes("your-order-form")
-      ? googleForms.orderUrl
-      : `${googleForms.orderUrl}?${new URLSearchParams({ [googleFormEntries.orderSummary]: summary }).toString()}`;
+    const subtotal = product.price * quantity;
+    const summary = buildOrderSummary([{ name: product.name, quantity }], subtotal);
+    const params = new URLSearchParams({
+      usp: "pp_url",
+      [googleForms.order.fields.orderDetails]: summary,
+      [googleForms.order.fields.orderTotal]: `₹${subtotal.toLocaleString("en-IN")}`,
+    });
+    const url = `${googleForms.order.prefillBaseUrl}?${params.toString()}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
