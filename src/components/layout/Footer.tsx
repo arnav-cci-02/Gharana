@@ -1,4 +1,4 @@
-import { ArrowUpRight, Camera } from "lucide-react";
+import { ArrowUpRight, Camera, Download, Smartphone } from "lucide-react";
 import { images } from "../../data/images";
 import { socialLinks } from "../../data/social";
 export function Footer({ navigate }: { navigate: (to: string) => void }) {
@@ -18,6 +18,29 @@ export function Footer({ navigate }: { navigate: (to: string) => void }) {
           Let's talk <ArrowUpRight size={16} />
         </button>
       </div>
+      <section className="footer-app" aria-labelledby="footer-app-title">
+        <div className="footer-app-copy">
+          <span className="footer-app-icon" aria-hidden="true">
+            <Smartphone size={24} strokeWidth={1.5} />
+          </span>
+          <div>
+            <p className="footer-app-label">Gharana on the go</p>
+            <h3 id="footer-app-title">A little closer, wherever you are.</h3>
+            <p>For the moments you prefer an app.</p>
+          </div>
+        </div>
+        <div className="footer-app-action">
+          <a
+            className="button button-outline footer-app-download"
+            href={`${import.meta.env.BASE_URL}downloads/Gharana-Makhana.apk`}
+            download="Gharana-Makhana.apk"
+            aria-describedby="footer-app-details"
+          >
+            Download Android app <Download size={16} aria-hidden="true" />
+          </a>
+          <span id="footer-app-details">Android · APK · 32 MB</span>
+        </div>
+      </section>
       <div className="footer-grid">
         <div>
           <h1 className="footer-title">GHARANA MAKHANA</h1>
